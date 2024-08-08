@@ -21,7 +21,7 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: volume1
-          mountPath: /var/www/html/TMS/includes/config.php
+          mountPath: /var/www/html/TMS/includes/
           readOnly: true
       volumes:
       - name: volume1
