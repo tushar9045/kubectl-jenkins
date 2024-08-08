@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         MINIKUBE_PATH = '/usr/local/bin/minikube'
+        KUBECONFIG = '/var/lib/jenkins/.kube/config'
     }
 
     stages {
@@ -11,21 +12,14 @@ pipeline {
             steps {
                 script {
                     // Set kubectl context to Minikube
-                    sh "${MINIKUBE_PATH} kubectl config get-contexts"
+                     sh "kubectl get pods --kubeconfig=${KUBECONFIG}"
                 }
             }
         }
 
        
         
-        stage('Verify Deployment') {
-            steps {
-                script {
-                    // Verify that the deployment was successful
-                    sh "kubectl get pods"
-                }
-            }
-        }
+        
     }
 
     
