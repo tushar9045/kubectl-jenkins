@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tms
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: tms
+  template:
+    metadata:
+      labels:
+        app: tms
+    spec:
+      containers:
+      - name: tms
+        image: tusharsaini9045/php-webapp:v-1
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: volume1
+          mountPath: /var/www/html/TMS/includes/config.php
+          readOnly: true
+      volumes:
+      - name: volume1
+        configMap:
+          name: myconfigmap
