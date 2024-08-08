@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     // Set kubectl context to Minikube
-                    sh "${MINIKUBE_PATH} kubectl -- config use-context minikube"
+                    sh "${MINIKUBE_PATH} kubectl config get-contexts"
                 }
             }
         }
