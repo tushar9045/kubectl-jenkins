@@ -6,20 +6,11 @@ pipeline {
     }
 
     stages {
-        stage('Set Up kubectl') {
+        stage('Test Access') {
             steps {
                 script {
-                    sh 'echo $KUBECONFIG'
-                    sh 'ls -l $KUBECONFIG'
-                    sh 'kubectl config get-contexts'
-                }
-            }
-        }
-
-        stage('Verify Deployment') {
-            steps {
-                script {
-                    sh 'kubectl get pods'
+                    sh 'ls -l /home/tushar/.minikube/profiles/minikube'
+                    sh 'cat /home/tushar/.minikube/profiles/minikube/client.crt'
                 }
             }
         }
