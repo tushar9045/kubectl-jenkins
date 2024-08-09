@@ -19,6 +19,27 @@ spec:
         image: tusharsaini9045/php-webapp:v-1
         ports:
         - containerPort: 80
+        env:
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: DB_HOST
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: DB_USER
+        - name: DB_PASS
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: DB_PASS
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: DB_NAME
         volumeMounts:
         - name: volume1
           mountPath: /var/www/html/TMS/includes/
